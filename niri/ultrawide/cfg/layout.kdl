@@ -3,11 +3,11 @@
 // ════════════════════════════════════════════════════════════════════
 layout {
     // ─── Fundamental Layout Behavior ───
-    gaps 4                                     	// Conservative gap for ultrawide (too large = wasted space)
+    gaps 8                                     	// Conservative gap for ultrawide (too large = wasted space)
     center-focused-column "never"               // Critical: Don't auto-center (breaks manual layouts)
-    
-    background-color "#1e1e1e"                  // Solid fallback (works with noctalia-shell transparency)
 
+    background-color "transparent"
+    
     // ─── Ultrawide-Optimized Preset Column Widths ───
     // For 3440×1440, these proportions create practical window sizes:
     default-column-width { proportion 0.25; }  // New windows spawn at 1/4 width
@@ -42,7 +42,7 @@ layout {
 
     // ─── Focus Ring (Visual Feedback) ───
     focus-ring {
-        off                  // Disable if using noctalia's decorations
+        on
     }
 }
 

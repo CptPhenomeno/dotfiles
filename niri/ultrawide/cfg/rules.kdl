@@ -16,12 +16,6 @@ layer-rule {
     place-within-backdrop true      // Wallpaper stays behind windows
 }
 
-// ─── Noctalia Lock Screen ───
-layer-rule {
-    match namespace="^noctalia-lock*"
-    keyboard-interactive true
-}
-
 // ─── Development Tools ───
 
 // Code editor (GoLand, VS Code, Cursor): Open in half-screen layout
@@ -87,15 +81,6 @@ window-rule {
     open-floating true              // Always float dialogs
 }
 
-// ─── Gaming ─── (for Elden Ring or other titles)
-window-rule {
-    match app-id="^.*elden.*"       // Elden Ring and similar
-    match app-id="^.*steam.*game"
-    open-floating false
-    default-column-width { proportion 1.0; }  // Full width for games
-    fullscreen "on-startup"         // Auto-fullscreen games
-}
-
 // ─── Video/Media ───
 window-rule {
     match app-id="^mpv"
@@ -112,22 +97,8 @@ window-rule {
     default-column-width { proportion 0.5; }   // Half-screen reading
 }
 
-// ─── System Tray / Status Bar Integration ───
-layer-rule {
-    match namespace="^waybar$"
-    match namespace="^panel"
-    anchor "top"
-}
-
 // ─── Floating Window Presets for Quick Access ───
 // When you want certain apps to always float (e.g., system monitor)
-
-window-rule {
-    match app-id="^gnome-system-monitor"
-    open-floating true
-    default-floating-width 800
-    default-floating-height 600
-}
 
 // Music player widget (if floating)
 window-rule {

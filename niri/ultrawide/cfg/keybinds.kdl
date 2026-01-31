@@ -52,12 +52,12 @@ binds {
     // ════════════════════════════════════════════════════════════════════
 
     // Jump to first/last column using Shift+Mod+Left/Right
-    Mod+Shift+Left                       hotkey-overlay-title="Jump to First Column" { focus-column-first; }
-    Mod+Shift+Right                      hotkey-overlay-title="Jump to Last Column" { focus-column-last; }
+    Mod+Home                             hotkey-overlay-title="Jump to First Column" { focus-column-first; }
+    Mod+End                              hotkey-overlay-title="Jump to Last Column" { focus-column-last; }
 
     // Move column to first/last position
-    Mod+CTRL+Shift+Left                  hotkey-overlay-title="Move Column to First" { move-column-to-first; }
-    Mod+CTRL+Shift+Right                 hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
+    Mod+Shift+Home                       hotkey-overlay-title="Move Column to First" { move-column-to-first; }
+    Mod+Shift+End                 		 hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
 
     // ════════════════════════════════════════════════════════════════════
     // ─── Workspace Switching (Mouse Wheel Scroll - Preferred Method) ───
@@ -90,18 +90,18 @@ binds {
     // Avoid number row - use letters instead
 
     // Width control: S/A (narrow/wide) - symmetric with arrow keys
-    Mod+A                                hotkey-overlay-title="Decrease Column Width (-5%)" { set-column-width "-5%"; }
-    Mod+S                                hotkey-overlay-title="Increase Column Width (+5%)" { set-column-width "+5%"; }
+    Mod+Shift+Left                       hotkey-overlay-title="Decrease Column Width (-5%)" { set-column-width "-5%"; }
+    Mod+Shift+Right                      hotkey-overlay-title="Increase Column Width (+5%)" { set-column-width "+5%"; }
 
     // Cycle preset widths (quick toggle)
-    Mod+G                                hotkey-overlay-title="Cycle Column Widths" { switch-preset-column-width; }
+    Mod+Z                                hotkey-overlay-title="Cycle Column Widths" { switch-preset-column-width; }
 
     // Height control: U/I (compact/full) - mnemonics: Up/In
-    Mod+U                                hotkey-overlay-title="Decrease Window Height (-5%)" { set-window-height "-5%"; }
-    Mod+I                                hotkey-overlay-title="Increase Window Height (+5%)" { set-window-height "+5%"; }
+    Mod+Shift+Down                       hotkey-overlay-title="Decrease Window Height (-5%)" { set-window-height "-5%"; }
+    Mod+Shift+Up                         hotkey-overlay-title="Increase Window Height (+5%)" { set-window-height "+5%"; }
 
     // Cycle preset heights
-    Mod+H                                hotkey-overlay-title="Cycle Window Heights" { switch-preset-window-height; }
+    Mod+X                                hotkey-overlay-title="Cycle Window Heights" { switch-preset-window-height; }
 
     // Column/window positioning
     Mod+F                                hotkey-overlay-title="Maximize Window (Full Screen)" { maximize-window-to-edges; }
@@ -116,39 +116,31 @@ binds {
 
     // Top-left corner (like up-left)
     Mod+Shift+W                          hotkey-overlay-title="Float: Top-Left Corner" {
-        toggle-window-floating;
-        move-floating-window -x 0 -y 0;
-        resize-floating-window -w 1720 -h 720;
+        spawn-sh "niri msg action toggle-window-floating && niri msg action move-floating-window -x 0 -y 0 && niri msg action resize-floating-window -w 1720 -h 720";
     }
 
     // Top-right corner (like up-right)
     Mod+Shift+E                          hotkey-overlay-title="Float: Top-Right Corner" {
-        toggle-window-floating;
-        move-floating-window -x 1720 -y 0;
-        resize-floating-window -w 1720 -h 720;
+        spawn-sh "niri msg action toggle-window-floating && niri msg action move-floating-window -x 1720 -y 0 && niri msg action resize-floating-window -w 1720 -h 720";
     }
 
     // Bottom-left corner (like down-left)
     Mod+Shift+A                          hotkey-overlay-title="Float: Bottom-Left Corner" {
-        toggle-window-floating;
-        move-floating-window -x 0 -y 720;
-        resize-floating-window -w 1720 -h 720;
+        spawn-sh "niri msg action toggle-window-floating && niri msg action move-floating-window -x 0 -y 720 && niri msg action resize-floating-window -w 1720 -h 720";
     }
 
     // Bottom-right corner (like down-right)
     Mod+Shift+D                          hotkey-overlay-title="Float: Bottom-Right Corner" {
-        toggle-window-floating;
-        move-floating-window -x 1720 -y 720;
-        resize-floating-window -w 1720 -h 720;
+        spawn-sh "niri msg action toggle-window-floating && niri msg action move-floating-window -x 1720 -y 720 && niri msg action resize-floating-window -w 1720 -h 720";
     }
 
     // Floating window utilities
     Mod+Shift+X                          hotkey-overlay-title="Float: Center on Screen" {
-        move-floating-window -x 860 -y 360;
+        spawn-sh "niri msg action move-floating-window -x 860 -y 360";
     }
 
     Mod+Shift+Z                          hotkey-overlay-title="Float: Maximize" {
-        resize-floating-window -w 3440 -h 1440;
+        spawn-sh "niri msg action resize-floating-window -w 3440 -h 1440";
     }
 
     // ════════════════════════════════════════════════════════════════════
