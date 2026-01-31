@@ -30,19 +30,16 @@ window-rule {
 
 // Terminal: Narrow columns for docking on sides
 window-rule {
-    match app-id="^ghostty"
-    match app-id="^alacritty"
-    match app-id="^kitty"
+    match app-id=r"ghostty"
     open-floating false
-    default-column-width { proportion 0.25; }
+    default-column-width { proportion 0.33; }
 }
 
 // ─── Browser ───
 window-rule {
-    match app-id="^Brave-browser$"
-    match app-id="^firefox"
+    match app-id=r"stable"
     open-floating false
-    default-column-width { proportion 0.67; }  // Browser benefits from more width
+    default-column-width { proportion 0.5; }  // Browser benefits from more width
 }
 
 // ─── Communication ───
