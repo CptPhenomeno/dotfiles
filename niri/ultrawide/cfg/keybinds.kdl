@@ -1,0 +1,183 @@
+// ════════════════════════════════════════════════════════════════════
+// Niri Keybindings - Numpad-Less Compact Keyboard Optimized
+// ════════════════════════════════════════════════════════════════════
+// For 3440×1440 ultrawide on keyboard without numpad
+
+binds {
+
+    // ────────────── Keybindings ──────────────
+    // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
+    // Optimized for numpad-less keyboards (compact, 60%, 75%, etc.)
+
+    // ─── noctalia-shell keybinds ───
+    // https://docs.noctalia.dev/getting-started/keybinds/
+
+    Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+
+    // ─── Applications ───
+    Mod+Return                           hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+D                                hotkey-overlay-title="Open App Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+B                                hotkey-overlay-title="Open Browser: Vivaldi" { spawn "vivaldi"; }
+    Mod+L                                hotkey-overlay-title="Lock Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock && niri msg action power-off-monitors"; }
+    Mod+Shift+Q                          hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+E                                hotkey-overlay-title="File Manager" { spawn "nautilus"; }
+    Mod+V                                hotkey-overlay-title="Clipboard" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+
+    // ─── Audio Controls ───
+    XF86AudioRaiseVolume                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute                        allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+    XF86AudioMicMute                     allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Window Management (CRITICAL: Arrow Keys + Modifiers) ───
+    // ════════════════════════════════════════════════════════════════════
+
+    Mod+Q                                hotkey-overlay-title="Close Window" { close-window; }
+
+    // Focus navigation with arrows
+    Mod+Left                             hotkey-overlay-title="Focus Column Left" { focus-column-left; }
+    Mod+Right                            hotkey-overlay-title="Focus Column Right" { focus-column-right; }
+    Mod+Up                               hotkey-overlay-title="Focus Window Up" { focus-window-up; }
+    Mod+Down                             hotkey-overlay-title="Focus Window Down" { focus-window-down; }
+
+    // Move columns/windows with Ctrl+Mod+arrows
+    Mod+CTRL+Left                        hotkey-overlay-title="Move Column Left" { move-column-left; }
+    Mod+CTRL+Right                       hotkey-overlay-title="Move Column Right" { move-column-right; }
+    Mod+CTRL+Up                          hotkey-overlay-title="Move Window Up" { move-window-up; }
+    Mod+CTRL+Down                        hotkey-overlay-title="Move Window Down" { move-window-down; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Column Navigation (Alternative to Home/End on compact keyboards) ───
+    // ════════════════════════════════════════════════════════════════════
+
+    // Jump to first/last column using Shift+Mod+Left/Right
+    Mod+Shift+Left                       hotkey-overlay-title="Jump to First Column" { focus-column-first; }
+    Mod+Shift+Right                      hotkey-overlay-title="Jump to Last Column" { focus-column-last; }
+
+    // Move column to first/last position
+    Mod+CTRL+Shift+Left                  hotkey-overlay-title="Move Column to First" { move-column-to-first; }
+    Mod+CTRL+Shift+Right                 hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Workspace Switching (Mouse Wheel Scroll - Preferred Method) ───
+    // ════════════════════════════════════════════════════════════════════
+    // Most efficient on compact keyboards - no number row conflicts!
+
+    Mod+WheelScrollUp                    cooldown-ms=150 hotkey-overlay-title="Previous Workspace" { focus-workspace-up; }
+    Mod+WheelScrollDown                  cooldown-ms=150 hotkey-overlay-title="Next Workspace" { focus-workspace-down; }
+
+    Mod+CTRL+WheelScrollUp               cooldown-ms=150 hotkey-overlay-title="Move to Previous Workspace" { move-column-to-workspace-up; }
+    Mod+CTRL+WheelScrollDown             cooldown-ms=150 hotkey-overlay-title="Move to Next Workspace" { move-column-to-workspace-down; }
+
+    // Tab through workspaces (efficient, no number mapping)
+    Mod+TAB                              hotkey-overlay-title="Previous Workspace" { focus-workspace-previous; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Horizontal Column Navigation (Mouse Wheel Left/Right) ───
+    // ════════════════════════════════════════════════════════════════════
+    // For ultrawide horizontal scrolling - most efficient on compact keyboard
+
+    Mod+WheelScrollLeft                  hotkey-overlay-title="Focus Previous Column" { focus-column-left; }
+    Mod+WheelScrollRight                 hotkey-overlay-title="Focus Next Column" { focus-column-right; }
+
+    Mod+CTRL+WheelScrollLeft             hotkey-overlay-title="Move Column Left" { move-column-left; }
+    Mod+CTRL+WheelScrollRight            hotkey-overlay-title="Move Column Right" { move-column-right; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Layout Controls (Letter-Based for Accessibility) ───
+    // ════════════════════════════════════════════════════════════════════
+    // Avoid number row - use letters instead
+
+    // Width control: S/A (narrow/wide) - symmetric with arrow keys
+    Mod+A                                hotkey-overlay-title="Decrease Column Width (-5%)" { set-column-width "-5%"; }
+    Mod+S                                hotkey-overlay-title="Increase Column Width (+5%)" { set-column-width "+5%"; }
+
+    // Cycle preset widths (quick toggle)
+    Mod+G                                hotkey-overlay-title="Cycle Column Widths" { switch-preset-column-width; }
+
+    // Height control: U/I (compact/full) - mnemonics: Up/In
+    Mod+U                                hotkey-overlay-title="Decrease Window Height (-5%)" { set-window-height "-5%"; }
+    Mod+I                                hotkey-overlay-title="Increase Window Height (+5%)" { set-window-height "+5%"; }
+
+    // Cycle preset heights
+    Mod+H                                hotkey-overlay-title="Cycle Window Heights" { switch-preset-window-height; }
+
+    // Column/window positioning
+    Mod+F                                hotkey-overlay-title="Maximize Window (Full Screen)" { maximize-window-to-edges; }
+    Mod+Shift+F                          hotkey-overlay-title="Maximize Column" { maximize-column; }
+    Mod+C                                hotkey-overlay-title="Center Column" { center-column; }
+    Mod+Shift+C                          hotkey-overlay-title="Center All Visible Columns" { center-visible-columns; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Floating Window Management (4-Corner Layout) ───
+    // ════════════════════════════════════════════════════════════════════
+    // NO number row! Use Shift+WASD arrow-adjacent keys instead
+
+    // Top-left corner (like up-left)
+    Mod+Shift+W                          hotkey-overlay-title="Float: Top-Left Corner" {
+        toggle-window-floating;
+        move-floating-window -x 0 -y 0;
+        resize-floating-window -w 1720 -h 720;
+    }
+
+    // Top-right corner (like up-right)
+    Mod+Shift+E                          hotkey-overlay-title="Float: Top-Right Corner" {
+        toggle-window-floating;
+        move-floating-window -x 1720 -y 0;
+        resize-floating-window -w 1720 -h 720;
+    }
+
+    // Bottom-left corner (like down-left)
+    Mod+Shift+A                          hotkey-overlay-title="Float: Bottom-Left Corner" {
+        toggle-window-floating;
+        move-floating-window -x 0 -y 720;
+        resize-floating-window -w 1720 -h 720;
+    }
+
+    // Bottom-right corner (like down-right)
+    Mod+Shift+D                          hotkey-overlay-title="Float: Bottom-Right Corner" {
+        toggle-window-floating;
+        move-floating-window -x 1720 -y 720;
+        resize-floating-window -w 1720 -h 720;
+    }
+
+    // Floating window utilities
+    Mod+Shift+X                          hotkey-overlay-title="Float: Center on Screen" {
+        move-floating-window -x 860 -y 360;
+    }
+
+    Mod+Shift+Z                          hotkey-overlay-title="Float: Maximize" {
+        resize-floating-window -w 3440 -h 1440;
+    }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Window Display Modes ───
+    // ════════════════════════════════════════════════════════════════════
+
+    Mod+T                                hotkey-overlay-title="Toggle Floating/Tiled" { toggle-window-floating; }
+    Mod+CTRL+F                           hotkey-overlay-title="Toggle Fullscreen" { fullscreen-window; }
+    Mod+W                                hotkey-overlay-title="Toggle Column Tabs" { toggle-column-tabbed-display; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Screenshot Controls ───
+    // ════════════════════════════════════════════════════════════════════
+
+    CTRL+Shift+1                         hotkey-overlay-title="Screenshot: Full Screen" { screenshot; }
+    CTRL+Shift+2                         hotkey-overlay-title="Screenshot: Current Screen" { screenshot-screen; }
+    CTRL+Shift+3                         hotkey-overlay-title="Screenshot: Current Window" { screenshot-window; }
+
+    // ════════════════════════════════════════════════════════════════════
+    // ─── Overview & System ───
+    // ════════════════════════════════════════════════════════════════════
+
+    Mod+O                                hotkey-overlay-title="Toggle Overview" repeat=false { toggle-overview; }
+    Mod+Shift+P                          hotkey-overlay-title="Power Off Monitors" { power-off-monitors; }
+
+    // Emergency escape (for fullscreen app blocking keybinds)
+    Mod+ESCAPE                           allow-inhibiting=false hotkey-overlay-title="Toggle Keyboard Shortcuts Inhibit" { toggle-keyboard-shortcuts-inhibit; }
+
+    // Exit session
+    CTRL+ALT+Delete                      { quit; }
+
+}

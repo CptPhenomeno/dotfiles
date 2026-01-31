@@ -1,0 +1,84 @@
+// ════════════════════════════════════════════════════════════════════
+// Niri Layout Configuration - Optimized for 3440×1440 Ultrawide
+// ════════════════════════════════════════════════════════════════════
+layout {
+    // ─── Fundamental Layout Behavior ───
+    gaps 4                                     	// Conservative gap for ultrawide (too large = wasted space)
+    center-focused-column "never"               // Critical: Don't auto-center (breaks manual layouts)
+    
+    background-color "#1e1e1e"                  // Solid fallback (works with noctalia-shell transparency)
+
+    // ─── Ultrawide-Optimized Preset Column Widths ───
+    // For 3440×1440, these proportions create practical window sizes:
+    default-column-width { proportion 0.25; }  // New windows spawn at 1/4 width
+    preset-column-widths {
+         proportion 0.15         // Super compact sidebar (516px)
+         proportion 0.2          // Narrow sidebar (688px)
+         proportion 0.25         // Terminal width (860px)
+         proportion 0.33         // Standard third (1147px)
+         proportion 0.4          // Balanced (1376px)
+         proportion 0.5          // Half (1720px)
+         proportion 0.67         // Dominant (2294px)
+         proportion 1.0          // Full width (3440px)
+     }
+    
+
+    // ─── Window Height Presets ───
+    // Useful for vertical stacking within columns
+    preset-window-heights {
+        proportion 1.0      // Full height (default)
+        proportion 0.5      // Half height (for vertical pairs)
+        proportion 0.33     // One-third height
+    }
+
+    // ─── Struts: Inner Margins (Optional) ───
+    // Uncomment to add centered workspace area, reducing horizontal scanning distance
+    struts {
+        // left 200          // 200px left margin
+        // right 200         // 200px right margin
+        // top 0
+        // bottom 0
+    }
+
+    // ─── Focus Ring (Visual Feedback) ───
+    focus-ring {
+        off                  // Disable if using noctalia's decorations
+    }
+}
+
+// ════════════════════════════════════════════════════════════════════
+// Per-Output Configuration - Ultrawide Settings
+// ════════════════════════════════════════════════════════════════════
+// After uncommenting display.kdl and running `niri msg outputs`, 
+// you can add per-monitor layout overrides:
+
+/*
+output "DP-1" {
+    // Your 34" ultrawide gets aggressive narrower presets
+    layout {
+        default-column-width { proportion 0.25; }
+        preset-column-widths {
+            proportion 0.15     // Super compact (240px sidebars)
+            proportion 0.2      // Narrow sidebar
+            proportion 0.25     // Terminal width
+            proportion 0.33     // Standard third
+            proportion 0.4      // Balanced
+            proportion 0.5      // Half
+            proportion 0.67     // Dominant
+            proportion 1.0      // Fullscreen
+        }
+    }
+}
+
+output "HDMI-1" {
+    // Secondary monitor (if connected) gets standard proportions
+    layout {
+        default-column-width { proportion 0.5; }
+        preset-column-widths {
+            proportion 0.33
+            proportion 0.5
+            proportion 1.0
+        }
+    }
+}
+*/

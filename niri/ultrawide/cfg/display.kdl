@@ -1,0 +1,79 @@
+// ════════════════════════════════════════════════════════════════════
+// Niri Display Configuration - Activate Your 3440×1440 Ultrawide
+// ════════════════════════════════════════════════════════════════════
+
+// ─── IMPORTANT: Setup Instructions ───
+// 1. Run: niri msg outputs
+// 2. Copy the exact display name from output (e.g., "DP-1", "HDMI-A-1")
+// 3. Replace "YOUR-ULTRAWIDE-NAME" below with your display name
+// 4. Remove the "/-" prefix from the output block to enable
+// 5. Restart Niri or test with: niri validate
+
+output "PNP(AOC) CU34G2XP 1Q1R9HA001055" {
+    // ─── Display Mode ───
+    // Replace with your monitor's native resolution and refresh rate
+    // Common ultrawide modes:
+    // - 3440x1440@60
+    // - 3440x1440@100
+    // - 3440x1440@120
+    // - 3440x1440@144
+    // - 3440x1440@165
+    // - 3440x1440@180 (maximum for most 34" ultrawides)
+    
+    mode "3440x1440@180"            
+    
+    // ─── Scaling ───
+    scale 1.0                       // No scaling (use 1.25 or 1.5 if text is too small)
+    
+    // ─── Position in Multi-Monitor Setup ───
+    // If you have multiple monitors, position them:
+    // position x y (coordinates in pixels relative to other outputs)
+    // Examples:
+    // position 0 0       // Primary monitor (leftmost)
+    // position 3440 0    // To the right of another 3440-wide monitor
+    // position 0 1440    // Below another 1440-tall monitor
+    
+    // ─── Rotation ───
+    // transform "normal"            // No rotation (default)
+    // transform "90"                // Rotate 90° clockwise
+    // transform "180"               // Rotate 180°
+    // transform "270"               // Rotate 270°
+    
+    // ─── Color Profile ───
+    // Leave commented unless you need specific color management
+    // color-profile "/path/to/icc/profile.icc"
+}
+
+// ─── Secondary Monitor Example (if you have another display) ───
+// Remove the "/- " prefix to enable this configuration
+
+/- output "HDMI-A-1" {
+    mode "1920x1080@60"
+    scale 1.0
+    position 3440 0                 // To the right of the ultrawide
+}
+
+// ═════════════════════════════════════════════════════════════════════════
+// Finding Your Display Name
+// ═════════════════════════════════════════════════════════════════════════
+// 
+// Run this command to get your exact display connector names:
+//   niri msg outputs
+//
+// Output will look like:
+//   DP-1 "MODEL NAME" (2560x1440 @ 60.000 Hz)
+//   HDMI-A-1 "MODEL NAME" (1920x1080 @ 60.000 Hz)
+//
+// Use "DP-1" or "HDMI-A-1" (the first column) in your config.
+//
+// ═════════════════════════════════════════════════════════════════════════
+// Testing Your Configuration
+// ═════════════════════════════════════════════════════════════════════════
+//
+// Before activating, validate syntax:
+//   niri validate
+//
+// If valid, restart Niri or test live mode.
+// If there are errors, the config will roll back to the last working version.
+//
+// ═════════════════════════════════════════════════════════════════════════
