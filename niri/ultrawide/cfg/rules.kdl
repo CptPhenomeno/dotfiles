@@ -32,14 +32,14 @@ window-rule {
 window-rule {
     match app-id=r"ghostty"
     open-floating false
-    default-column-width { proportion 0.33; }
+    default-column-width { proportion 0.4; }
 }
 
 // ─── Browser ───
 window-rule {
-    match app-id=r"stable"
+    match app-id=r"vivaldi"
     open-floating false
-    default-column-width { proportion 0.5; }  // Browser benefits from more width
+    default-column-width { proportion 0.6; }  // Browser benefits from more width
 }
 
 // ─── Communication ───

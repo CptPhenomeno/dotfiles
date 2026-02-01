@@ -90,8 +90,8 @@ binds {
     // Avoid number row - use letters instead
 
     // Width control: S/A (narrow/wide) - symmetric with arrow keys
-    Mod+Shift+Left                       hotkey-overlay-title="Decrease Column Width (-5%)" { set-column-width "-5%"; }
-    Mod+Shift+Right                      hotkey-overlay-title="Increase Column Width (+5%)" { set-column-width "+5%"; }
+    Mod+Shift+Left                       hotkey-overlay-title="Decrease Window Width (-5%)" { set-window-width "-5%"; }
+    Mod+Shift+Right                      hotkey-overlay-title="Increase Window Width (+5%)" { set-window-width "+5%"; }
 
     // Cycle preset widths (quick toggle)
     Mod+Z                                hotkey-overlay-title="Cycle Column Widths" { switch-preset-column-width; }
