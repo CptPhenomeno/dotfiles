@@ -109,6 +109,9 @@ binds {
     Mod+C                                hotkey-overlay-title="Center Column" { center-column; }
     Mod+Shift+C                          hotkey-overlay-title="Center All Visible Columns" { center-visible-columns; }
 
+    Mod+ALT+Left						 { consume-or-expel-window-left; }
+    Mod+ALT+Right						 { consume-or-expel-window-right; }
+
     // ════════════════════════════════════════════════════════════════════
     // ─── Floating Window Management (4-Corner Layout) ───
     // ════════════════════════════════════════════════════════════════════
